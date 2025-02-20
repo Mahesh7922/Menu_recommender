@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Your Recommendations</h2>
+
+{% for recommendation in recommendations %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Recommendation from {{ recommendation.created_at|date:"F j, Y, g:i a" }}</h5>
+        </div>
+        <div class="card-body">
+            <pre class="recommendation-text">{{ recommendation.recommendations }}</pre>
+        </div>
+    </div>
+{% empty %}
+    <div class="alert alert-info">
+        No recommendations yet. Upload a menu to get started!
+    </div>
+{% endfor %}
+{% endblock %}
